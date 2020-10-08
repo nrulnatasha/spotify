@@ -1,0 +1,30 @@
+<br />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+<div
+  class="card text-white bg-secondary mb-3"
+  style="max-width: 60rem;margin: auto;"
+>
+  <div class="card-header"><h1 class="title">Need Music</h1></div>
+  <div class="card-body">
+    <p class="need">Use Spotify App to find your music</p>
+    <form>
+      <div class="form-group"></div>
+      <input
+        class="w3-input w3-border w3-square-xxlarge purple-font"
+        color="black"
+        type="text"
+        [(ngModel)]="searchStr"
+        placeholder="Artist Name"
+        (keyup)="searchTerm$.next()"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </form>
+    <div *ngFor="let item of resultItems">
+      <app-result-box
+        [musicData]="item"
+        (viewMusicDetails)="listenForDetails($event)"
+      ></app-result-box>
+    </div>
+  </div>
+</div>
